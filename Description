@@ -1,0 +1,20 @@
+My project is designed to automate the tasks done by the following :
+a. Git
+b. Github
+c. Jenkins
+d. Docker
+e. WebServer
+
+As soon as a developer commits anything on his local repository, it will get pushed to Github Remote repository automatically.
+Github will send a trigger to Jenkins regarding an update in the repository.
+
+Jenkins has 3 active jobs:
+Job1 : To Download any new code pushed onto the master branch of the Remote Repo -->> Copy this code into a local folder inside
+		RHEL_8 -->> Launch a webServer configured container via Docker : PRODUCTION ENVIRONMENT,  and link that folder to this container's
+		/var/www/httpd file to deploy the real time changes on the Client website
+Job2 : To Download any new code pushed onto the feature branch (dev1) of the Remote Repo -->> Copy this code into a local folder inside
+		RHEL_8 -->> Launch a webServer configured container via docker : TESTING ENVIRONMENT,  and link that folder to this container's
+		/var/www/httpd file to deploy the real time changes on the Test website
+Job3 : To be run manually by the Quality Assurance team when the Feature branch code is verified -->> Merge the feature branch 
+		to the master branch -->> Run Job1 to deploy the changes on the Client Website
+	
